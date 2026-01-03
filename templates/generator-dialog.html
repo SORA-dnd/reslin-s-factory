@@ -1,0 +1,171 @@
+<div class="reslin-factory-content">
+    <!-- Navigation -->
+    <nav class="reslin-nav">
+        <button class="nav-btn active" data-view="generate"><i class="fas fa-magic"></i> Generate</button>
+        <!-- Fix mode temporarily disabled -->
+        <!-- <button class="nav-btn" data-view="fix"><i class="fas fa-wrench"></i> Fix</button> -->
+        <button class="nav-btn" data-view="settings"><i class="fas fa-cog"></i> Settings</button>
+    </nav>
+
+    <!-- Generate View -->
+    <div id="view-generate" class="view-panel">
+        <!-- Patreon Status -->
+        <div class="patreon-status-section">
+            <div class="patreon-status-header">
+                <h3><i class="fab fa-patreon"></i> Patreon Membership</h3>
+                <span id="patreon-status-badge" class="patreon-status-badge disconnected">Not Connected</span>
+            </div>
+            <div class="patreon-status-actions">
+                <button id="patreon-connect-btn" class="patreon-connect-btn">
+                    <i class="fab fa-patreon"></i> Connect Patreon
+                </button>
+            </div>
+            <!-- Quota Display (for free tier users) -->
+            <div id="quota-display" class="quota-display hidden">
+                <i class="fas fa-ticket-alt"></i>
+                <span>Free Tier: <strong id="quota-remaining">-</strong> / <span id="quota-limit">5</span> uses remaining this month</span>
+            </div>
+        </div>
+
+        <!-- API Configuration (Quick Access) -->
+        <div class="api-config-section">
+            <h3><i class="fas fa-key"></i> API Configuration</h3>
+            <div class="api-config-grid">
+                <div class="api-config-field full-width">
+                    <label for="api-base-url">API Base URL</label>
+                    <input type="text" id="api-base-url" placeholder="https://api.openai.com/v1">
+                </div>
+                <div class="api-config-field">
+                    <label for="api-key">API Key</label>
+                    <input type="password" id="api-key" placeholder="sk-...">
+                </div>
+                <div class="api-config-field">
+                    <label for="api-model">Model</label>
+                    <input type="text" id="api-model" placeholder="gpt-4">
+                </div>
+            </div>
+        </div>
+
+        <!-- Mode Selection -->
+        <div class="mode-selection">
+            <div class="mode-card active" data-value="macro">
+                <h4><i class="fas fa-code"></i> Macro-Assisted</h4>
+                <p>Uses macros for complex logic. Recommended for advanced items.</p>
+            </div>
+            <div class="mode-card" data-value="standard">
+                <h4><i class="fas fa-cube"></i> Standard</h4>
+                <p>Pure Active Effects. Best for simple items.</p>
+            </div>
+        </div>
+        <input type="hidden" id="generation-mode" value="macro">
+
+        <!-- Description -->
+        <div class="description-section">
+            <label for="item-description">Item Description</label>
+            <textarea id="item-description" placeholder="Describe your item in detail. Include mechanics, damage, effects, and any special abilities..."></textarea>
+        </div>
+
+        <!-- Generate Button -->
+        <div class="generate-section">
+            <button id="generate-btn"><i class="fas fa-bolt"></i> Generate Item</button>
+        </div>
+
+        <!-- Status Display -->
+        <div id="status-display">
+            <span class="status-text">READY</span>
+        </div>
+
+        <!-- Phase Summary -->
+        <div id="phase-summary-container" class="hidden">
+            <h4 id="phase-summary-phase">Phase 1: Analysis</h4>
+            <div id="phase-summary-text"></div>
+            <div class="phase-progress">
+                <div id="phase-progress-fill" style="width: 0%"></div>
+            </div>
+            <div id="phase-progress-text">0%</div>
+        </div>
+
+        <!-- Console Output -->
+        <div id="console-output"></div>
+    </div>
+
+    <!-- Fix View -->
+    <div id="view-fix" class="view-panel hidden">
+        <h3>Interactive Fix</h3>
+        <p style="color: #94a3b8;">Drop an existing item and its documentation to fix issues.</p>
+        
+        <div class="drop-zone" data-type="Item">
+            <div class="drop-content">
+                <i class="fas fa-box"></i>
+                <p>Drop Item Here</p>
+            </div>
+            <div class="drop-preview hidden">
+                <img class="preview-img" src="">
+                <span class="preview-name"></span>
+                <button class="remove-btn"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+
+        <div class="drop-zone" data-type="JournalEntry">
+            <div class="drop-content">
+                <i class="fas fa-book"></i>
+                <p>Drop Documentation (Journal) Here</p>
+            </div>
+            <div class="drop-preview hidden">
+                <span class="preview-name"></span>
+                <button class="remove-btn"><i class="fas fa-times"></i></button>
+            </div>
+        </div>
+
+        <div class="generate-section">
+            <button id="fix-btn"><i class="fas fa-wrench"></i> Fix Item</button>
+        </div>
+    </div>
+
+    <!-- Settings View -->
+    <div id="view-settings" class="view-panel hidden">
+        <div class="settings-section">
+            <h3><i class="fab fa-patreon"></i> Patreon Account</h3>
+            <div class="setting-row">
+                <span class="setting-label">Status</span>
+                <span id="settings-patreon-status" class="setting-value">Not Connected</span>
+            </div>
+            <div class="setting-row">
+                <span class="setting-label">Membership</span>
+                <span id="settings-membership-status" class="setting-value">-</span>
+            </div>
+            <div class="setting-row">
+                <span class="setting-label">Expires</span>
+                <span id="settings-membership-expires" class="setting-value">-</span>
+            </div>
+        </div>
+
+        <div class="settings-section">
+            <h3><i class="fas fa-server"></i> API Configuration</h3>
+            <div class="setting-row">
+                <span class="setting-label">Base URL</span>
+                <span id="settings-api-url" class="setting-value">Not Set</span>
+            </div>
+            <div class="setting-row">
+                <span class="setting-label">API Key</span>
+                <span id="settings-api-key" class="setting-value">Not Set</span>
+            </div>
+            <div class="setting-row">
+                <span class="setting-label">Model</span>
+                <span id="settings-api-model" class="setting-value">Not Set</span>
+            </div>
+        </div>
+
+        <div class="settings-section">
+            <h3><i class="fas fa-info-circle"></i> About</h3>
+            <div class="setting-row">
+                <span class="setting-label">Version</span>
+                <span class="setting-value">1.0.0</span>
+            </div>
+            <div class="setting-row">
+                <span class="setting-label">Module</span>
+                <span class="setting-value">Reslin's Factory (Global)</span>
+            </div>
+        </div>
+    </div>
+</div>

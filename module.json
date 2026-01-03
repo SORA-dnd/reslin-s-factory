@@ -1,0 +1,64 @@
+{
+  "id": "reslin-s-factory",
+  "title": "Reslin's Factory - AI Automation (Global)",
+  "description": "Advanced AI-powered automation generator for D&D 5e with Patreon authentication. Uses your own API key for generation. (Global Edition)",
+  "version": "1.0.0",
+  "compatibility": {
+    "minimum": "13",
+    "verified": "13"
+  },
+  "authors": [
+    {
+      "name": "Sora"
+    }
+  ],
+  "esmodules": [
+    "scripts/module.js"
+  ],
+  "styles": [
+    "styles/module.css"
+  ],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "languages/en.json"
+    }
+  ],
+  "relationships": {
+    "systems": [
+      {
+        "id": "dnd5e",
+        "type": "system",
+        "compatibility": {
+          "minimum": "3.0.0"
+        }
+      }
+    ],
+    "requires": [
+      {
+        "id": "midi-qol",
+        "type": "module"
+      },
+      {
+        "id": "dae",
+        "type": "module"
+      },
+      {
+        "id": "chris-premades",
+        "type": "module"
+      },
+      {
+        "id": "dfreds-convenient-effects",
+        "type": "module"
+      },
+      {
+        "id": "automated-conditions-5e",
+        "type": "module"
+      }
+    ]
+  },
+  "url": "",
+  "manifest": "",
+  "download": ""
+}
