@@ -45,12 +45,17 @@ Enter your own API endpoint and API key.
 
 ## Recommended AI Models
 
-| Model | Provider | Quality | |-------|----------|---------| | Claude Opus 4.5 | Anthropic | ⭐ Excellent | | Gemini 3 Pro | Google | ⭐ Excellent | | Claude Sonnet 4.5 | Anthropic | ✅ Good | | Gemini 3 Flash | Google | ✅ Good |
+| Model | Provider | Quality | |-------|----------|---------|
+| Claude Opus 4.5 | Anthropic | ⭐ Excellent | 
+| Gemini 3 Pro | Google | ⭐ Excellent |
+| Claude Sonnet 4.5 | Anthropic | ✅ Good |
+| Gemini 3 Flash | Google | ✅ Good |
 
 ⚠️ __Note:__ Testing was only performed with the models listed above. Other models may produce unpredictable results.
 
 
 ---
+
 
 
 
