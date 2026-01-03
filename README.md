@@ -43,5 +43,20 @@ Enter your own API endpoint and API key.
 - DFreds Convenient Effects
 - Automated Conditions 5e
 
+## Recommended AI Models
+
+For optimal results, we recommend using one of the following models:
+
+| Model | Provider | Recommended |
+|-------|----------|-------------|
+| Claude 4.5 Sonnet | Anthropic | ⭐ Best |
+| Gemini 3 | Google | ⭐ Excellent |
+| GPT-5 | OpenAI | ⭐ Excellent |
+| Claude 3.5 Sonnet | Anthropic | ✅ Good |
+| GPT-4o | OpenAI | ✅ Good |
+
+⚠️ **Warning:** Smaller or older models (e.g., GPT-3.5, Claude Instant, Gemini 1.5 Flash) may produce poor results or fail to generate valid automation code.
+
 ---
+
 
